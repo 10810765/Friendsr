@@ -1,8 +1,8 @@
 package com.example.marijn.friendsr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -29,16 +29,16 @@ public class MainActivity extends AppCompatActivity {
         int sansa = getResources().getIdentifier("sansa", "drawable", getPackageName());
         int tyrion = getResources().getIdentifier("tyrion", "drawable", getPackageName());
 
-        friends.add(new Friend("arya", "-", arya));
-        friends.add(new Friend("cersei", "-", cersei));
-        friends.add(new Friend("daenerys", "-", daenerys));
-        friends.add(new Friend("jaime", "-", jaime));
-        friends.add(new Friend("jon", "-", jon));
-        friends.add(new Friend("jorah", "-", jorah));
-        friends.add(new Friend("margaery", "-", margaery));
-        friends.add(new Friend("melisandre", "-", melisandre));
-        friends.add(new Friend("sansa", "-", sansa));
-        friends.add(new Friend("tyrion", "-", tyrion));
+        friends.add(new Friend("Arya", "A girl needs a name", arya));
+        friends.add(new Friend("Cersei", "Family is everything", cersei));
+        friends.add(new Friend("Daenerys", "I love my dragons", daenerys));
+        friends.add(new Friend("Jaime", "I miss my hand", jaime));
+        friends.add(new Friend("Jon", "I know nothing", jon));
+        friends.add(new Friend("Jorah", "At Daenerys' service", jorah));
+        friends.add(new Friend("Margaery", "Power by marriage", margaery));
+        friends.add(new Friend("Melisandre", "The lord of light will save us", melisandre));
+        friends.add(new Friend("Sansa", "Winter is coming", sansa));
+        friends.add(new Friend("Tyrion", "More wine!", tyrion));
 
         FriendsAdapter adapter = new FriendsAdapter(this, R.layout.grid_item, friends);
 
@@ -53,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("test", "Test message");
+            Friend clickedFriend = (Friend) parent.getItemAtPosition(position);
+
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            intent.putExtra("clicked_friend", clickedFriend);
+            startActivity(intent);
         }
     }
 }
