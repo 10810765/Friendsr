@@ -6,11 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import java.util.ArrayList;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 17/12/2018
+ */
 public class MainActivity extends AppCompatActivity {
 
+    // Create an arrayList to store the sample friends
     ArrayList<Friend> friends = new ArrayList<>();
 
     @Override
@@ -18,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Get the references to our images
         int arya = getResources().getIdentifier("arya", "drawable", getPackageName());
         int cersei = getResources().getIdentifier("cersei", "drawable", getPackageName());
         int daenerys = getResources().getIdentifier("daenerys", "drawable", getPackageName());
@@ -29,32 +35,40 @@ public class MainActivity extends AppCompatActivity {
         int sansa = getResources().getIdentifier("sansa", "drawable", getPackageName());
         int tyrion = getResources().getIdentifier("tyrion", "drawable", getPackageName());
 
+        // Add sample friends to the arrayList
         friends.add(new Friend("Arya", "A girl needs a name", arya));
         friends.add(new Friend("Cersei", "Family is everything", cersei));
         friends.add(new Friend("Daenerys", "I love my dragons", daenerys));
         friends.add(new Friend("Jaime", "I miss my hand", jaime));
         friends.add(new Friend("Jon", "I know nothing", jon));
         friends.add(new Friend("Jorah", "At Daenerys' service", jorah));
-        friends.add(new Friend("Margaery", "Power by marriage", margaery));
+        friends.add(new Friend("Margaery", "Power through relations!", margaery));
         friends.add(new Friend("Melisandre", "The lord of light will save us", melisandre));
         friends.add(new Friend("Sansa", "Winter is coming", sansa));
         friends.add(new Friend("Tyrion", "More wine!", tyrion));
 
+        // Instantiate the adapter
         FriendsAdapter adapter = new FriendsAdapter(this, R.layout.grid_item, friends);
 
+        // Get grid id
         GridView grid = findViewById(R.id.gridDisplay);
 
+        // Attach the adapter to the grid view
         grid.setAdapter(adapter);
 
+        // Set on grid item click listener
         grid.setOnItemClickListener(new GridItemClickListener());
     }
 
+    // Create an on Friend clicked listener
     private class GridItemClickListener implements AdapterView.OnItemClickListener {
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            // Get the Friend object of the clicked item in the grid view
             Friend clickedFriend = (Friend) parent.getItemAtPosition(position);
 
+            // Pass the Friend object to the next activity
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             intent.putExtra("clicked_friend", clickedFriend);
             startActivity(intent);
