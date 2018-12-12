@@ -36,14 +36,14 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         }
 
         // Get the profile name (TextView) and picture (ImageView) id
-        TextView profileText = convertView.findViewById(R.id.profileName);
+        TextView profileTitle = convertView.findViewById(R.id.profileName);
         ImageView profileImage = convertView.findViewById(R.id.profilePicture);
 
         // Get the index of the Friend that we want to display
         Friend friendPosition = (Friend) friends.get(position);
 
         // Set the profile name and picture
-        profileText.setText(friendPosition.getName());
+        profileTitle.setText(friendPosition.getName());
         profileImage.setImageDrawable(getContext().getResources().getDrawable(friendPosition.getDrawableId()));
 
         return convertView;
