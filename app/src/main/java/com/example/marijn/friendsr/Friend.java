@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class Friend implements Serializable {
     private String name, bio;
     private int drawableId;
-    private float rating;
 
     // Friend constructor, used to store friend objects
     public Friend(String name, String bio, int drawableId) {
@@ -30,10 +29,6 @@ public class Friend implements Serializable {
 
     public int getDrawableId() {
         return drawableId;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
     }
 }
 

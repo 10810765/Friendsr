@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView nameView = findViewById(R.id.nameView);
         TextView bioView = findViewById(R.id.bioView);
 
-        // Use getName() on the retrieved Friend object
+        // Use getName() on the retrieved Friend object to be used later
         name = retrievedFriend.getName();
 
         // Set the name, bio and picture of the retrieved Friend
@@ -43,11 +43,11 @@ public class ProfileActivity extends AppCompatActivity {
         // Set an on rating change listener
         ratingBar.setOnRatingBarChangeListener(new ProfileRating());
 
-        // Get the previously stored rating
-        SharedPreferences prefs = getSharedPreferences(name, MODE_PRIVATE);
-        Float StoredRating = prefs.getFloat("rating", 0);
+        // Get a previously stored rating
+        SharedPreferences prefs = getSharedPreferences("ratings", MODE_PRIVATE);
+        Float StoredRating = prefs.getFloat(name, 0);
 
-        // Set the stored rating
+        // Set the previously stored rating
         ratingBar.setRating(StoredRating);
     }
 
@@ -56,8 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
         @Override
         public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
             // Edit the old rating and store the new one
-            SharedPreferences.Editor editor = getSharedPreferences(name, MODE_PRIVATE).edit();
-            editor.putFloat("rating", rating);
+            SharedPreferences.Editor editor = getSharedPreferences("ratings", MODE_PRIVATE).edit();
+            editor.putFloat(name, rating);
             editor.apply();
         }
     }
