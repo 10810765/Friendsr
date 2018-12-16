@@ -14,7 +14,7 @@ By: Marijn Meijering - 10810765
 #### Portrait view screenshots
 ![App1 Friendsr](https://github.com/10810765/Friendsr/blob/master/doc/Friendsr_1.png)
 ![App2 Friendsr](https://github.com/10810765/Friendsr/blob/master/doc/Friendsr_2.png)
-
-#### Landscape view screenshots
 ![App3 Friendsr](https://github.com/10810765/Friendsr/blob/master/doc/Friendsr_3.png)
+
+#### Landscape view screenshot
 ![App4 Friendsr](https://github.com/10810765/Friendsr/blob/master/doc/Friendsr_4.png)
