@@ -3,4 +3,6 @@
     <string name="name">name</string>
     <string name="profile_picture">Profile_picture</string>
     <string name="bio">bio</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="favourite_picture">favourite_picture</string>
 </resources>

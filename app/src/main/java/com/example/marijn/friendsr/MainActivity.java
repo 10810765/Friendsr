@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     // Create an arrayList to store the sample friends
     ArrayList<Friend> friends = new ArrayList<>();
 
+    private GridView grid; // Variable to hold the GridView ID
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +53,21 @@ public class MainActivity extends AppCompatActivity {
         FriendsAdapter adapter = new FriendsAdapter(this, R.layout.grid_item, friends);
 
         // Get grid id
-        GridView grid = findViewById(R.id.gridDisplay);
+        grid = findViewById(R.id.gridDisplay);
 
         // Attach the adapter to the grid view
         grid.setAdapter(adapter);
 
         // Set on grid item click listener
         grid.setOnItemClickListener(new GridItemClickListener());
+    }
+
+    @Override // After a pause or restart
+    public void onResume() {
+        super.onResume();
+        // Refresh the grid view
+        FriendsAdapter adapter = new FriendsAdapter(this, R.layout.grid_item, friends);
+        grid.setAdapter(adapter);
     }
 
     // Create an on Friend clicked listener
